@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: '^images/.*$'
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-added-large-files
+      - id: check-docstring-first
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-yaml
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.3
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        language: system
+        entry: poetry run -- pytest
+        types: [python]
+        pass_filenames: false
+        stages: [pre-commit, pre-merge-commit, pre-push, manual]
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.25.0
+    hooks:
+    - id: commitizen
+    - id: commitizen-branch
+      stages: [push]

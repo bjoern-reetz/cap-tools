@@ -1,0 +1,100 @@
+[project]
+name = "cap-tools"
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "pep440"
+version_provider = "poetry"
+update_changelog_on_bump = true
+
+[tool.coverage.run]
+source = ["src", "tests"]
+
+[tool.poetry]
+name = "cap-tools"
+version = "0.1.0"
+description = "Python data bindings for the Common Alerting Protocol Version."
+authors = ["Björn Reetz <git@bjoern-reetz.de>"]
+readme = "README.md"
+packages = [{include = "cap_tools", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+xsdata = "^24.4"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.10.0"
+pytest = "^8.2.0"
+xsdata = {extras = ["cli", "lxml"], version = "*"}
+pytest-cov = "^5.0.0"
+hypothesis = {extras = ["cli"], version = "^6.100.5"}
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov",
+    "--cov-report=term:skip-covered",
+    "--import-mode=importlib",
+    "--strict-config",
+    "--strict-markers",
+]
+pythonpath = ["."]
+
+[tool.ruff.lint]
+select = [
+    # Pyflakes
+    "F",
+    # pycodestyle
+    "E4", "E7", "E9", "W6",
+    # mccabe
+    "C90",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+    # pyupgrade
+    "UP",
+    # flake8-async
+    "ASYNC",
+    # flake8-bandit
+    "S",
+    # flake8-boolean-trap
+    "FBT",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-errmsg
+    "EM",
+    # flake8-logging-format
+    "G",
+    # flake8-print
+    "T20",
+    # flake8-pytest-style
+    "PT",
+    # flake8-simplify
+    "SIM",
+    # flake8-use-pathlib
+    "PTH",
+    # eradicate
+    "ERA",
+    # tryceratops
+    "TRY",
+    # perflint
+    "PERF",
+    # Ruff-specific rules
+    "RUF",
+]
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/test_*.py" = ["S101"]
