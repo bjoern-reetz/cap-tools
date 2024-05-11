@@ -139,7 +139,6 @@ class Value:
         namespace = "urn:oasis:names:tc:emergency:cap:1.2"
 
     value: str = field(
-        default="",
         metadata={
             "required": True,
         },
@@ -153,7 +152,6 @@ class ValueName:
         namespace = "urn:oasis:names:tc:emergency:cap:1.2"
 
     value: str = field(
-        default="",
         metadata={
             "required": True,
         },
