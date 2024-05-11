@@ -5,6 +5,7 @@ from enum import Enum
 from xsdata.models.datatype import XmlDateTime
 
 __NAMESPACE__ = "urn:oasis:names:tc:emergency:cap:1.2"
+DEFAULT_LANGUAGE = "en-US"
 
 
 class Category(Enum):
@@ -276,6 +277,16 @@ class Area:
         },
     )
 
+    def geocodes_to_dict(self) -> dict[str, str]:
+        return {
+            geocode.value_name.value: geocode.value.value for geocode in self.geocodes
+        }
+
+    def geocodes_from_dict(self, geocodes: dict[str, str]) -> None:
+        self.geocodes = [
+            Geocode(ValueName(name), Value(value)) for name, value in geocodes.items()
+        ]
+
 
 @dataclass(slots=True, kw_only=True)
 class Info:
@@ -437,6 +448,36 @@ class Info:
             "namespace": "urn:oasis:names:tc:emergency:cap:1.2",
         },
     )
+
+    def get_language(self) -> str:
+        return DEFAULT_LANGUAGE if self.language is None else self.language
+
+    def set_language(self, language: str | None) -> None:
+        self.language = None if language == DEFAULT_LANGUAGE else language
+
+    def event_codes_to_dict(self) -> dict[str, str]:
+        return {
+            event_code.value_name.value: event_code.value.value
+            for event_code in self.event_codes
+        }
+
+    def event_codes_from_dict(self, event_codes: dict[str, str]) -> None:
+        self.event_codes = [
+            EventCode(ValueName(name), Value(value))
+            for name, value in event_codes.items()
+        ]
+
+    def parameters_to_dict(self) -> dict[str, str]:
+        return {
+            parameter.value_name.value: parameter.value.value
+            for parameter in self.parameters
+        }
+
+    def parameters_from_dict(self, parameters: dict[str, str]) -> None:
+        self.parameters = [
+            Parameter(ValueName(name), Value(value))
+            for name, value in parameters.items()
+        ]
 
 
 @dataclass(slots=True, kw_only=True)
