@@ -132,7 +132,7 @@ class Status(Enum):
     DRAFT = "Draft"
 
 
-@dataclass(slots=True, kw_only=True)
+@dataclass(slots=True)
 class Value:
     class Meta:
         name = "value"
@@ -146,7 +146,7 @@ class Value:
     )
 
 
-@dataclass(slots=True, kw_only=True)
+@dataclass(slots=True)
 class ValueName:
     class Meta:
         name = "valueName"
@@ -160,7 +160,7 @@ class ValueName:
     )
 
 
-@dataclass(slots=True, kw_only=True)
+@dataclass(slots=True)
 class Geocode:
     class Meta:
         global_type = False
@@ -182,7 +182,7 @@ class Geocode:
     )
 
 
-@dataclass(slots=True, kw_only=True)
+@dataclass(slots=True)
 class EventCode:
     class Meta:
         global_type = False
@@ -204,7 +204,7 @@ class EventCode:
     )
 
 
-@dataclass(slots=True, kw_only=True)
+@dataclass(slots=True)
 class Parameter:
     class Meta:
         global_type = False
