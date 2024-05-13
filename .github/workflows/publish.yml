@@ -74,6 +74,18 @@ jobs:
         inputs: >-
           ./dist/*.tar.gz
           ./dist/*.whl
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+    - name: Install Commitizen
+      run: >-
+        python3 -m
+        pip install
+        commitizen
+        --user
+    - name: Generate release notes
+      run: python3 -m commitizen changelog --file-name RELEASE_NOTES.md ${{ github.ref_name }}
     - name: Create GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
@@ -81,7 +93,7 @@ jobs:
         gh release create
         '${{ github.ref_name }}'
         --repo '${{ github.repository }}'
-        --generate-notes
+        --notes-file RELEASE_NOTES.md
         dist/**
 
   publish-to-testpypi:
