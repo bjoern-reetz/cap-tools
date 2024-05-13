@@ -450,9 +450,22 @@ class Info:
     )
 
     def get_language(self) -> str:
+        """Get the language of this Info.
+
+        If the language is not explicitly set,
+        "en-US" is returned as per CAP spec v1.2.
+        """
         return DEFAULT_LANGUAGE if self.language is None else self.language
 
     def set_language(self, language: str | None) -> None:
+        """Set the language of this Info.
+
+        Using this method to set the language to the default language (i.e. passing "en-US" as argument)
+        will set `Info.language` to `None`. Retrieving the language then via `Info.get_language`
+        will correctly return "en-US".
+
+        If you want to set the language to 'en-US' explicitly, use `Info.language = "en-US"` instead.
+        """
         self.language = None if language == DEFAULT_LANGUAGE else language
 
     def event_codes_to_dict(self) -> dict[str, str]:
