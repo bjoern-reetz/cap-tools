@@ -278,11 +278,13 @@ class Area:
     )
 
     def geocodes_to_dict(self) -> dict[str, str]:
+        """Return the Area.geocodes as a dictionary."""
         return {
             geocode.value_name.value: geocode.value.value for geocode in self.geocodes
         }
 
     def geocodes_from_dict(self, geocodes: dict[str, str]) -> None:
+        """Overwrite Area.geocodes with values derived from the given dictionary."""
         self.geocodes = [
             Geocode(ValueName(name), Value(value)) for name, value in geocodes.items()
         ]
