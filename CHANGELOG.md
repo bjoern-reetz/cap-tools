@@ -1,3 +1,9 @@
+## v2.2.0 (2024-05-14)
+
+### Feat
+
+- **cap_tools.models.Area**: add geocodes_to_dict and geocodes_from_dict methods
+
 ## v2.1.0 (2024-05-13)
 
 ### Feat
