@@ -1,3 +1,9 @@
+## v2.1.0 (2024-05-13)
+
+### Feat
+
+- **cap_tools.models.Info**: add get_language and set_language methods
+
 ## v2.0.0 (2024-05-11)
 
 ### BREAKING CHANGE
