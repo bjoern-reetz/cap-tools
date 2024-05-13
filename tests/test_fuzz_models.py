@@ -228,7 +228,7 @@ def test_fuzz_info(
     resources: list[cap_tools.models.Resource],
     areas: list[cap_tools.models.Area],
 ) -> None:
-    cap_tools.models.Info(
+    info = cap_tools.models.Info(
         language=language,
         categories=categories,
         event=event,
@@ -251,6 +251,8 @@ def test_fuzz_info(
         resources=resources,
         areas=areas,
     )
+
+    assert info.get_language() == ("en-US" if language is None else language)
 
 
 @given(
