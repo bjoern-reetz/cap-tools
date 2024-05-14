@@ -17,3 +17,9 @@ alert = parser.parse("path/to/my/cap.xml", Alert)
 ```
 
 For advanced usage, just take a look at the [xsData](https://xsdata.readthedocs.io/en/latest/data_binding/basics/) docs.
+
+## Limitations
+
+While this library is fully typed to enable Python type safety, it currently does neither implement the pattern restrictions from the [CAP v1.2 XSD specification](./CAP-v1.2.xsd) (i.e. the pattern restriction for the XmlDateTime fields) nor the additional restrictions imposed by the [normative alert message structure](https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.html#_Toc454352650) (e.g. Alert.identifier must not include spaces, commas or the characters "<" and "&").
+
+This does not matter much when using this library for reading CAP messages - but when you are using this library to create CAP messages, **you are responsible** for respecting those additional restrictions yourself!
