@@ -1,4 +1,12 @@
-from cap_tools.models import Certainty, Info, Severity, Urgency
+from cap_tools.models import (
+    Certainty,
+    EventCode,
+    Info,
+    Severity,
+    Urgency,
+    Value,
+    ValueName,
+)
 
 
 def test_set_language():
@@ -24,3 +32,29 @@ def test_set_language():
     info.set_language(default_language)
     assert info.language is None
     assert info.get_language() == default_language
+
+
+def test_event_codes_to_from_dict():
+    event_codes_dict = {"foo": "bar", "lorem": "ipsum"}
+    event_codes = [
+        EventCode(ValueName(name), Value(value))
+        for name, value in event_codes_dict.items()
+    ]
+    info = Info(
+        event="my event",
+        urgency=Urgency.IMMEDIATE,
+        severity=Severity.SEVERE,
+        certainty=Certainty.UNLIKELY,
+        event_codes=event_codes,
+    )
+    assert info.event_codes_to_dict() == event_codes_dict
+
+    new_event_codes_dict = {"foo": "baz", "dolor": "sit"}
+    info.event_codes_from_dict(new_event_codes_dict)
+    assert info.event_codes_to_dict() == new_event_codes_dict
+
+    new_event_codes = [
+        EventCode(ValueName(name), Value(value))
+        for name, value in new_event_codes_dict.items()
+    ]
+    assert info.event_codes == new_event_codes
