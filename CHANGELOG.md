@@ -1,3 +1,15 @@
+## v2.3.0 (2024-05-14)
+
+### Feat
+
+- **cap_tools.models.Info**: add parameters_to_dict and parameters_from_dict methods
+- **cap_tools.models.Info**: add event_codes_to_dict and event_codes_from_dict methods
+- **cap_tools.models.Area**: add geocode_to_dict and geocode_from_dict methods
+
+### Refactor
+
+- **tests**: move quick tests to dedicated module
+
 ## v2.2.0 (2024-05-14)
 
 ### Feat
