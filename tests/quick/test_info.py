@@ -2,6 +2,7 @@ from cap_tools.models import (
     Certainty,
     EventCode,
     Info,
+    Parameter,
     Severity,
     Urgency,
     Value,
@@ -58,3 +59,29 @@ def test_event_codes_to_from_dict():
         for name, value in new_event_codes_dict.items()
     ]
     assert info.event_codes == new_event_codes
+
+
+def test_parameters_to_from_dict():
+    parameters_dict = {"foo": "bar", "lorem": "ipsum"}
+    parameters = [
+        Parameter(ValueName(name), Value(value))
+        for name, value in parameters_dict.items()
+    ]
+    info = Info(
+        event="my event",
+        urgency=Urgency.IMMEDIATE,
+        severity=Severity.SEVERE,
+        certainty=Certainty.UNLIKELY,
+        parameters=parameters,
+    )
+    assert info.parameters_to_dict() == parameters_dict
+
+    new_parameters_dict = {"foo": "baz", "dolor": "sit"}
+    info.parameters_from_dict(new_parameters_dict)
+    assert info.parameters_to_dict() == new_parameters_dict
+
+    new_parameters = [
+        Parameter(ValueName(name), Value(value))
+        for name, value in new_parameters_dict.items()
+    ]
+    assert info.parameters == new_parameters
