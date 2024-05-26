@@ -27,6 +27,7 @@ packages = [{include = "cap_tools", from = "src"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 xsdata = "^24.4"
+multidict = "^6.0.5"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.10.0"
