@@ -1,7 +1,9 @@
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from decimal import Decimal
 from enum import Enum
 
+from multidict import MultiDict
 from xsdata.models.datatype import XmlDateTime
 
 __NAMESPACE__ = "urn:oasis:names:tc:emergency:cap:1.2"
@@ -277,14 +279,14 @@ class Area:
         },
     )
 
-    def geocodes_to_dict(self) -> dict[str, str]:
-        """Return the Area.geocodes as a dictionary."""
-        return {
-            geocode.value_name.value: geocode.value.value for geocode in self.geocodes
-        }
+    def geocodes_to_dict(self) -> MultiDict[str, str]:
+        """Return the Area.geocodes as a MultiDict."""
+        return MultiDict(
+            (geocode.value_name.value, geocode.value.value) for geocode in self.geocodes
+        )
 
-    def geocodes_from_dict(self, geocodes: dict[str, str]) -> None:
-        """Overwrite Area.geocodes with values derived from the given dictionary."""
+    def geocodes_from_dict(self, geocodes: Mapping[str, str]) -> None:
+        """Overwrite Area.geocodes with values derived from the given mapping (e.g. dict or MultiDict)."""
         self.geocodes = [
             Geocode(ValueName(name), Value(value)) for name, value in geocodes.items()
         ]
@@ -470,25 +472,25 @@ class Info:
         """
         self.language = None if language == DEFAULT_LANGUAGE else language
 
-    def event_codes_to_dict(self) -> dict[str, str]:
-        return {
-            event_code.value_name.value: event_code.value.value
+    def event_codes_to_dict(self) -> MultiDict[str, str]:
+        return MultiDict(
+            (event_code.value_name.value, event_code.value.value)
             for event_code in self.event_codes
-        }
+        )
 
-    def event_codes_from_dict(self, event_codes: dict[str, str]) -> None:
+    def event_codes_from_dict(self, event_codes: Mapping[str, str]) -> None:
         self.event_codes = [
             EventCode(ValueName(name), Value(value))
             for name, value in event_codes.items()
         ]
 
-    def parameters_to_dict(self) -> dict[str, str]:
-        return {
-            parameter.value_name.value: parameter.value.value
+    def parameters_to_dict(self) -> MultiDict[str, str]:
+        return MultiDict(
+            (parameter.value_name.value, parameter.value.value)
             for parameter in self.parameters
-        }
+        )
 
-    def parameters_from_dict(self, parameters: dict[str, str]) -> None:
+    def parameters_from_dict(self, parameters: Mapping[str, str]) -> None:
         self.parameters = [
             Parameter(ValueName(name), Value(value))
             for name, value in parameters.items()

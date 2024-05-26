@@ -19,3 +19,15 @@ def test_reproduce_oasis_examples():
         )
 
         assert serialized_alert == example_xml
+
+
+def test_multidict_oasis():
+    parser = XmlParser()
+
+    example_path = pathlib.Path("data/oasis/example2.xml")
+
+    alert = parser.parse(example_path, Alert)
+    geocodes_multidict = alert.infos[0].areas[0].geocodes_to_dict()
+
+    assert geocodes_multidict["SAME"] == "006109"
+    assert geocodes_multidict.getall("SAME") == ["006109", "006009", "006003"]
