@@ -5,10 +5,10 @@ Python data bindings for the [Common Alerting Protocol Version 1.2](https://docs
 
 This package contains a Python model for CAP XML documents that was generated using using [xsData](https://xsdata.readthedocs.io/) along with some convenience utilities.
 
-To parse a CAP XML from a file into an instance of `cappy.models.Alert`, do as follows:
+To parse a CAP XML from a file into an instance of `cap_tools.models.Alert`, do as follows:
 
 ```python
-from cappy.models import Alert
+from cap_tools.models import Alert
 from xsdata.formats.dataclass.parsers import XmlParser
 
 parser = XmlParser()
