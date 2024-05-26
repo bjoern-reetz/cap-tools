@@ -1,3 +1,9 @@
+## v2.4.0 (2024-05-26)
+
+### Feat
+
+- **cap_tools.models**: *_to_dict() now return MultiDict, *_from_dict() now accept Mapping
+
 ## v2.3.0 (2024-05-14)
 
 ### Feat
