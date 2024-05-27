@@ -16,6 +16,10 @@ update_changelog_on_bump = true
 [tool.coverage.run]
 source = ["src", "tests"]
 
+[tool.mypy]
+strict = true
+files = "src"
+
 [tool.poetry]
 name = "cap-tools"
 version = "2.4.0"
