@@ -70,6 +70,10 @@ Or use a `dict`:
 
 The MultiDicts do not retain any connection to the model. In all cases, the internal state is always represented by the list of containers of key-value-pairs.
 
+#### Splitting group listings
+
+The attributes `addresses`, `references` and `incidents` of `Alert` store multiple values as "group listings", i.e. multiple values are space-delimited. You can split these attributes by using `Alert.addresses_to_list()`, `Alert.references_to_list()` and `Alert.incidents_to_list()` and write back to them with corresponding `Alert.*_from_list()` methods respectively.
+
 #### Awareness of "en-US" as the default language
 
 When no language is explicitly defined on an Info element, "en-US" is assumed per CAP spec. This library implements this behavior neither by using default values nor by using descriptor fields.

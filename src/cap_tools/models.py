@@ -6,6 +6,8 @@ from enum import Enum
 from multidict import MultiDict
 from xsdata.models.datatype import XmlDateTime
 
+from cap_tools.utils import join_and_maybe_add_quotes, split_and_remove_quotes
+
 __NAMESPACE__ = "urn:oasis:names:tc:emergency:cap:1.2"
 DEFAULT_LANGUAGE = "en-US"
 
@@ -601,3 +603,21 @@ class Alert:
             "namespace": "http://www.w3.org/2000/09/xmldsig#",
         },
     )
+
+    def addresses_to_list(self) -> list[str]:
+        return split_and_remove_quotes(self.addresses)
+
+    def addresses_from_list(self, addressees: list[str]) -> None:
+        self.addresses = join_and_maybe_add_quotes(addressees)
+
+    def references_to_list(self) -> list[str]:
+        return split_and_remove_quotes(self.references)
+
+    def references_from_list(self, references: list[str]) -> None:
+        self.references = join_and_maybe_add_quotes(references)
+
+    def incidents_to_list(self) -> list[str]:
+        return split_and_remove_quotes(self.incidents)
+
+    def incidents_from_list(self, incidents: list[str]) -> None:
+        self.incidents = join_and_maybe_add_quotes(incidents)
