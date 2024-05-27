@@ -22,7 +22,7 @@ files = "src"
 
 [tool.poetry]
 name = "cap-tools"
-version = "2.4.0"
+version = "2.5.0"
 description = "Python data bindings for the Common Alerting Protocol Version."
 authors = ["Björn Reetz <git@bjoern-reetz.de>"]
 readme = "README.md"

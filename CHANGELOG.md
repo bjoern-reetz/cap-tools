@@ -1,3 +1,9 @@
+## v2.5.0 (2024-05-27)
+
+### Feat
+
+- **cap_tools.models.Alert**: add *_to_list() and *_from_list() methods to split/join group listings
+
 ## v2.4.0 (2024-05-26)
 
 ### Feat
