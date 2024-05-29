@@ -2,26 +2,10 @@ import cap_tools.utils
 from hypothesis import given
 from hypothesis import strategies as st
 
+from . import strategies as custom_st
 
-@given(
-    items=st.lists(
-        st.text(
-            min_size=1,
-            alphabet=st.characters(
-                codec="utf-8",
-                categories=[
-                    "L",  #  Letter
-                    "M",  #  Mark
-                    "N",  #  Number
-                    "P",  #  Punctuation
-                    "S",  #  Symbol
-                    "Zs",  # Separator, space
-                ],
-                exclude_characters="<&'\"\\",
-            ),
-        )
-    )
-)
+
+@given(items=st.lists(custom_st.group_listing_item))
 def test_roundtrip_join_and_maybe_add_quotes_split_and_remove_quotes(
     items: list[str],
 ) -> None:
