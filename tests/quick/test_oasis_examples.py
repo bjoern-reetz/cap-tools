@@ -6,7 +6,7 @@ from xsdata.formats.dataclass.serializers import XmlSerializer
 from xsdata.formats.dataclass.serializers.config import SerializerConfig
 
 
-def test_reproduce_oasis_examples():
+def test_reproduce_oasis_examples() -> None:
     parser = XmlParser()
     serializer = XmlSerializer(config=SerializerConfig(indent="  "))
 
@@ -21,7 +21,7 @@ def test_reproduce_oasis_examples():
         assert serialized_alert == example_xml
 
 
-def test_multidict_oasis():
+def test_multidict_oasis() -> None:
     parser = XmlParser()
 
     example_path = pathlib.Path("data/oasis/example2.xml")

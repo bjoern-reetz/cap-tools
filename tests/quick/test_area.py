@@ -1,7 +1,7 @@
 from cap_tools.models import Area, Geocode, Value, ValueName
 
 
-def test_geocode_to_from_dict():
+def test_geocode_to_from_dict() -> None:
     geocodes_dict = {"foo": "bar", "lorem": "ipsum"}
     geocodes = [
         Geocode(ValueName(name), Value(value)) for name, value in geocodes_dict.items()

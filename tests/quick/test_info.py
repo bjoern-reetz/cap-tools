@@ -10,7 +10,7 @@ from cap_tools.models import (
 )
 
 
-def test_set_language():
+def test_set_language() -> None:
     language = "foo"
 
     info = Info(
@@ -35,7 +35,7 @@ def test_set_language():
     assert info.get_language() == default_language
 
 
-def test_event_codes_to_from_dict():
+def test_event_codes_to_from_dict() -> None:
     event_codes_dict = {"foo": "bar", "lorem": "ipsum"}
     event_codes = [
         EventCode(ValueName(name), Value(value))
@@ -61,7 +61,7 @@ def test_event_codes_to_from_dict():
     assert info.event_codes == new_event_codes
 
 
-def test_parameters_to_from_dict():
+def test_parameters_to_from_dict() -> None:
     parameters_dict = {"foo": "bar", "lorem": "ipsum"}
     parameters = [
         Parameter(ValueName(name), Value(value))
