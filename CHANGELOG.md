@@ -1,3 +1,14 @@
+## v2.5.1 (2024-05-29)
+
+### Fix
+
+- **cap_tools.models**: replace wrong type annotation MultiDict[str, str] -> MultiDict[str]
+
+### Refactor
+
+- **cap_tools**: add py.typed
+- **tests**: add type hints for tests
+
 ## v2.5.0 (2024-05-27)
 
 ### Feat
