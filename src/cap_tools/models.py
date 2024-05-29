@@ -281,7 +281,7 @@ class Area:
         },
     )
 
-    def geocodes_to_dict(self) -> MultiDict[str, str]:
+    def geocodes_to_dict(self) -> MultiDict[str]:
         """Return the Area.geocodes as a MultiDict."""
         return MultiDict(
             (geocode.value_name.value, geocode.value.value) for geocode in self.geocodes
@@ -474,7 +474,7 @@ class Info:
         """
         self.language = None if language == DEFAULT_LANGUAGE else language
 
-    def event_codes_to_dict(self) -> MultiDict[str, str]:
+    def event_codes_to_dict(self) -> MultiDict[str]:
         return MultiDict(
             (event_code.value_name.value, event_code.value.value)
             for event_code in self.event_codes
@@ -486,7 +486,7 @@ class Info:
             for name, value in event_codes.items()
         ]
 
-    def parameters_to_dict(self) -> MultiDict[str, str]:
+    def parameters_to_dict(self) -> MultiDict[str]:
         return MultiDict(
             (parameter.value_name.value, parameter.value.value)
             for parameter in self.parameters
