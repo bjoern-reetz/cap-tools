@@ -12,6 +12,7 @@ tag_format = "v$version"
 version_scheme = "pep440"
 version_provider = "poetry"
 update_changelog_on_bump = true
+pre_bump_hooks = ["poetry run pytest", "scripts/regenerate-badges.sh"]
 
 [tool.coverage.run]
 source = ["src", "tests"]
@@ -39,6 +40,7 @@ pytest = "^8.2.0"
 xsdata = {extras = ["cli", "lxml"], version = "*"}
 pytest-cov = "^5.0.0"
 hypothesis = {extras = ["cli"], version = "^6.100.5"}
+pybadges = "^3.0.1"
 
 [tool.pytest.ini_options]
 addopts = [
