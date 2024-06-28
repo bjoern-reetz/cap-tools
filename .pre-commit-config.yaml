@@ -14,7 +14,7 @@ repos:
       - id: check-vcs-permalinks
       - id: check-yaml
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.3
+    rev: v0.5.0
     hooks:
       - id: ruff
         args: [--fix]
@@ -36,7 +36,7 @@ repos:
         pass_filenames: false
         stages: [pre-commit, pre-merge-commit, pre-push, manual]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.25.0
+    rev: v3.27.0
     hooks:
     - id: commitizen
     - id: commitizen-branch
