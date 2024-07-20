@@ -143,11 +143,7 @@ class Value:
         name = "value"
         namespace = "urn:oasis:names:tc:emergency:cap:1.2"
 
-    value: str = field(
-        metadata={
-            "required": True,
-        },
-    )
+    value: str = field(metadata={"required": True})
 
 
 @dataclass(slots=True)
@@ -156,11 +152,7 @@ class ValueName:
         name = "valueName"
         namespace = "urn:oasis:names:tc:emergency:cap:1.2"
 
-    value: str = field(
-        metadata={
-            "required": True,
-        },
-    )
+    value: str = field(metadata={"required": True})
 
 
 @dataclass(slots=True)
@@ -288,7 +280,7 @@ class Area:
         )
 
     def geocodes_from_dict(self, geocodes: Mapping[str, str]) -> None:
-        """Overwrite Area.geocodes with values derived from the given mapping (e.g. dict or MultiDict)."""
+        """Overwrite Area.geocodes with values derived from the given mapping."""
         self.geocodes = [
             Geocode(ValueName(name), Value(value)) for name, value in geocodes.items()
         ]
@@ -466,11 +458,13 @@ class Info:
     def set_language(self, language: str | None) -> None:
         """Set the language of this Info.
 
-        Using this method to set the language to the default language (i.e. passing "en-US" as argument)
-        will set `Info.language` to `None`. Retrieving the language then via `Info.get_language`
-        will correctly return "en-US".
+        Using this method to set the language to the default language
+        (i.e. passing "en-US" as argument) will set `Info.language` to `None`.
+        Retrieving the language then via `Info.get_language` will correctly
+        return "en-US".
 
-        If you want to set the language to 'en-US' explicitly, use `Info.language = "en-US"` instead.
+        If you want to set the language to 'en-US' explicitly, use
+        `Info.language = "en-US"` instead.
         """
         self.language = None if language == DEFAULT_LANGUAGE else language
 
@@ -501,100 +495,31 @@ class Info:
 
 @dataclass(slots=True, kw_only=True)
 class Alert:
-    """
-    CAP Alert Message (version 1.2)
-    """
+    """CAP Alert Message (version 1.2)."""
 
     class Meta:
         name = "alert"
         namespace = "urn:oasis:names:tc:emergency:cap:1.2"
 
-    identifier: str = field(
-        metadata={
-            "type": "Element",
-            "required": True,
-        }
-    )
-    sender: str = field(
-        metadata={
-            "type": "Element",
-            "required": True,
-        }
-    )
-    sent: XmlDateTime = field(
-        metadata={
-            "type": "Element",
-            "required": True,
-        }
-    )
-    status: Status = field(
-        metadata={
-            "type": "Element",
-            "required": True,
-        }
-    )
+    identifier: str = field(metadata={"type": "Element", "required": True})
+    sender: str = field(metadata={"type": "Element", "required": True})
+    sent: XmlDateTime = field(metadata={"type": "Element", "required": True})
+    status: Status = field(metadata={"type": "Element", "required": True})
     msg_type: MsgType = field(
-        metadata={
-            "name": "msgType",
-            "type": "Element",
-            "required": True,
-        }
+        metadata={"name": "msgType", "type": "Element", "required": True}
     )
-    source: str | None = field(
-        default=None,
-        metadata={
-            "type": "Element",
-        },
-    )
-    scope: Scope = field(
-        metadata={
-            "type": "Element",
-            "required": True,
-        }
-    )
-    restriction: str | None = field(
-        default=None,
-        metadata={
-            "type": "Element",
-        },
-    )
-    addresses: str | None = field(
-        default=None,
-        metadata={
-            "type": "Element",
-        },
-    )
+    source: str | None = field(default=None, metadata={"type": "Element"})
+    scope: Scope = field(metadata={"type": "Element", "required": True})
+    restriction: str | None = field(default=None, metadata={"type": "Element"})
+    addresses: str | None = field(default=None, metadata={"type": "Element"})
     codes: list[str] = field(
-        default_factory=list,
-        metadata={
-            "name": "code",
-            "type": "Element",
-        },
+        default_factory=list, metadata={"name": "code", "type": "Element"}
     )
-    note: str | None = field(
-        default=None,
-        metadata={
-            "type": "Element",
-        },
-    )
-    references: str | None = field(
-        default=None,
-        metadata={
-            "type": "Element",
-        },
-    )
-    incidents: str | None = field(
-        default=None,
-        metadata={
-            "type": "Element",
-        },
-    )
+    note: str | None = field(default=None, metadata={"type": "Element"})
+    references: str | None = field(default=None, metadata={"type": "Element"})
+    incidents: str | None = field(default=None, metadata={"type": "Element"})
     infos: list[Info] = field(
-        default_factory=list,
-        metadata={
-            "name": "info",
-            "type": "Element",
-        },
+        default_factory=list, metadata={"name": "info", "type": "Element"}
     )
     _signatures: list[object] = field(
         default_factory=list,

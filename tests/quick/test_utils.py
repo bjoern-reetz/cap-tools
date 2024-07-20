@@ -1,6 +1,7 @@
 import itertools
 
 import pytest
+
 from cap_tools.utils import join_and_maybe_add_quotes, split_and_remove_quotes
 
 test_suite_symmetric = {
@@ -10,10 +11,7 @@ test_suite_symmetric = {
     '"foo bar baz"': ["foo bar baz"],
 }
 
-test_suite_asymmetric = {
-    "": [],
-    '"foobar" baz': ["foobar", "baz"],
-}
+test_suite_asymmetric = {"": [], '"foobar" baz': ["foobar", "baz"]}
 
 
 @pytest.mark.parametrize(

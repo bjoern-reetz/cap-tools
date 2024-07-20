@@ -1,12 +1,13 @@
 import decimal
 
-import cap_tools
-import cap_tools.models
 import xsdata.models.datatype
-from cap_tools.models import EventCode, Geocode, Parameter, Resource, Value, ValueName
 from hypothesis import given
 from hypothesis import strategies as st
 from xsdata.models.datatype import XmlDateTime
+
+import cap_tools
+import cap_tools.models
+from cap_tools.models import EventCode, Geocode, Parameter, Resource, Value, ValueName
 
 
 @given(
@@ -35,7 +36,7 @@ from xsdata.models.datatype import XmlDateTime
     incidents=st.one_of(st.none(), st.text()),
     infos=st.from_type(list[cap_tools.models.Info]),
 )
-def test_fuzz_alert(
+def test_fuzz_alert(  # noqa: PLR0913
     identifier: str,
     sender: str,
     sent: xsdata.models.datatype.XmlDateTime,
@@ -83,7 +84,7 @@ def test_fuzz_alert(
     altitude=st.one_of(st.none(), st.decimals()),
     ceiling=st.one_of(st.none(), st.decimals()),
 )
-def test_fuzz_area(
+def test_fuzz_area(  # noqa: PLR0913
     area_desc: str,
     polygons: list[str],
     circles: list[str],
@@ -205,7 +206,7 @@ def test_fuzz_geocode(
     ),
     areas=st.from_type(list[cap_tools.models.Area]),
 )
-def test_fuzz_info(
+def test_fuzz_info(  # noqa: PLR0913
     language: str | None,
     categories: list[cap_tools.Category],
     event: str,
@@ -273,7 +274,7 @@ def test_fuzz_parameter(
     deref_uri=st.one_of(st.none(), st.text()),
     digest=st.one_of(st.none(), st.text()),
 )
-def test_fuzz_resource(
+def test_fuzz_resource(  # noqa: PLR0913
     resource_desc: str,
     mime_type: str,
     size: int | None,

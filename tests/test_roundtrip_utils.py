@@ -1,6 +1,7 @@
-import cap_tools.utils
 from hypothesis import given
 from hypothesis import strategies as st
+
+import cap_tools.utils
 
 from . import strategies as custom_st
 

@@ -1,9 +1,10 @@
 import pathlib
 
-from cap_tools.models import Alert
 from xsdata.formats.dataclass.parsers import XmlParser
 from xsdata.formats.dataclass.serializers import XmlSerializer
 from xsdata.formats.dataclass.serializers.config import SerializerConfig
+
+from cap_tools.models import Alert
 
 
 def test_reproduce_oasis_examples() -> None:
