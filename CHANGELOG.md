@@ -1,3 +1,18 @@
+## v3.0.0 (2024-07-20)
+
+### BREAKING CHANGE
+
+- Alert.references_to_list and Alert.references_from_list now return/receive list[Reference] instead of list[str].
+- The capability of uting keyword-arguments was removed.
+
+### Feat
+
+- **cap_tools**: introduce Reference NamedTuple
+
+### Refactor
+
+- **utils**: change split_and_remove_quotes and join_and_maybe_add_quotes to accept positional arguments only
+
 ## v2.5.1 (2024-05-29)
 
 ### Fix
