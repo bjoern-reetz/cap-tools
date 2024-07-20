@@ -6,8 +6,8 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/cap-tools)](https://pypistats.org/packages/cap-tools)
 [![license](./images/license.svg)](./LICENSE)
 [![source files coverage](./images/coverage.svg)](https://coverage.readthedocs.io/)
+[![pyright](./images/pyright.svg)](https://microsoft.github.io/pyright)
 [![ruff](./images/ruff.svg)](https://docs.astral.sh/ruff)
-[![mypy](./images/mypy.svg)](https://www.mypy-lang.org/)
 [![pre-commit](./images/pre-commit.svg)](https://pre-commit.com/)
 
 Python data bindings for the [Common Alerting Protocol Version 1.2](https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.html).

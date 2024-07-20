@@ -52,7 +52,7 @@ def test_fuzz_alert(  # noqa: PLR0913
     incidents: str | None,
     infos: list[cap_tools.models.Info],
 ) -> None:
-    cap_tools.models.Alert(
+    _ = cap_tools.models.Alert(
         identifier=identifier,
         sender=sender,
         sent=sent,
@@ -92,7 +92,7 @@ def test_fuzz_area(  # noqa: PLR0913
     altitude: decimal.Decimal | None,
     ceiling: decimal.Decimal | None,
 ) -> None:
-    cap_tools.models.Area(
+    _ = cap_tools.models.Area(
         area_desc=area_desc,
         polygons=polygons,
         circles=circles,
@@ -109,7 +109,7 @@ def test_fuzz_area(  # noqa: PLR0913
 def test_fuzz_event_code(
     value_name: cap_tools.models.ValueName, value: cap_tools.models.Value
 ) -> None:
-    cap_tools.models.EventCode(value_name=value_name, value=value)
+    _ = cap_tools.models.EventCode(value_name=value_name, value=value)
 
 
 @given(
@@ -119,7 +119,7 @@ def test_fuzz_event_code(
 def test_fuzz_geocode(
     value_name: cap_tools.models.ValueName, value: cap_tools.models.Value
 ) -> None:
-    cap_tools.models.Geocode(value_name=value_name, value=value)
+    _ = cap_tools.models.Geocode(value_name=value_name, value=value)
 
 
 @given(
@@ -263,7 +263,7 @@ def test_fuzz_info(  # noqa: PLR0913
 def test_fuzz_parameter(
     value_name: cap_tools.models.ValueName, value: cap_tools.models.Value
 ) -> None:
-    cap_tools.models.Parameter(value_name=value_name, value=value)
+    _ = cap_tools.models.Parameter(value_name=value_name, value=value)
 
 
 @given(
@@ -282,7 +282,7 @@ def test_fuzz_resource(  # noqa: PLR0913
     deref_uri: str | None,
     digest: str | None,
 ) -> None:
-    cap_tools.models.Resource(
+    _ = cap_tools.models.Resource(
         resource_desc=resource_desc,
         mime_type=mime_type,
         size=size,
@@ -294,9 +294,9 @@ def test_fuzz_resource(  # noqa: PLR0913
 
 @given(value=st.text())
 def test_fuzz_value(value: str) -> None:
-    cap_tools.models.Value(value=value)
+    _ = cap_tools.models.Value(value=value)
 
 
 @given(value=st.text())
 def test_fuzz_value_name(value: str) -> None:
-    cap_tools.models.ValueName(value=value)
+    _ = cap_tools.models.ValueName(value=value)

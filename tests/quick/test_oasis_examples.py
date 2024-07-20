@@ -15,7 +15,7 @@ def test_reproduce_oasis_examples() -> None:
         example_xml = example_path.read_text()
 
         alert = parser.parse(example_path, Alert)
-        serialized_alert = serializer.render(
+        serialized_alert = serializer.render(  # pyright: ignore[reportUnknownMemberType]
             alert, ns_map={None: "urn:oasis:names:tc:emergency:cap:1.2"}
         )
 

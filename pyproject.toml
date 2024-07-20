@@ -19,10 +19,6 @@ pre_bump_hooks = ["poetry run pytest", "scripts/regenerate-badges.sh"]
 [tool.coverage.run]
 source = ["src", "tests"]
 
-[tool.mypy]
-strict = true
-files = ["src", "tests"]
-
 [tool.poetry]
 name = "cap-tools"
 version = "2.5.1"
@@ -37,12 +33,33 @@ xsdata = "^24.4"
 multidict = "^6.0.5"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.10.0"
 pytest = "^8.2.0"
 xsdata = {extras = ["cli", "lxml"], version = "*"}
 pytest-cov = "^5.0.0"
 hypothesis = {extras = ["cli"], version = "^6.100.5"}
 pybadges = "^3.0.1"
+setuptools = "^71.0.4"
+
+[tool.poetry.group.pyright]
+optional = true
+
+[tool.poetry.group.pyright.dependencies]
+pyright = "^1.1.372"
+
+[tool.pyright]
+strict = ["src", "tests"]
+pythonVersion = "3.10"
+pythonPlatform = "All"
+# reportCallInDefaultInitializer = "warning"  # use ruff B008 instead
+# reportImplicitOverride = "warning"  # requires Python >= 3.12
+# reportImplicitStringConcatenation = "warning"  # use ruff ISC instead
+reportImportCycles = "warning"
+reportMissingSuperCall = "warning"
+reportPropertyTypeMismatch = "warning"
+# reportShadowedImports = "warning"  # use ruff A0 instead
+reportUninitializedInstanceVariable = "warning"
+reportUnnecessaryTypeIgnoreComment = "warning"
+reportUnusedCallResult = "warning"
 
 [tool.pytest.ini_options]
 addopts = [
@@ -82,9 +99,6 @@ ignore = [
     "ISC001",  # single-line-implicit-string-concatenation
     "ISC002",  # multi-line-implicit-string-concatenation
 ]
-
-[tool.ruff.lint.pyupgrade]
-keep-runtime-typing = true
 
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
