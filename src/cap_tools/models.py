@@ -2,6 +2,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, field
 from decimal import Decimal
 from enum import Enum
+from typing import NamedTuple
 
 from multidict import MultiDict
 from xsdata.models.datatype import XmlDateTime
@@ -10,6 +11,21 @@ from cap_tools.utils import join_and_maybe_add_quotes, split_and_remove_quotes
 
 __NAMESPACE__ = "urn:oasis:names:tc:emergency:cap:1.2"
 DEFAULT_LANGUAGE = "en-US"
+
+
+class Reference(NamedTuple):
+    sender: str
+    identifier: str
+    sent: XmlDateTime
+
+    @staticmethod
+    def from_string(string: str, /) -> "Reference":
+        sender, identifier, sent_str = string.split(",")
+        sent = XmlDateTime.from_string(sent_str)
+        return Reference(sender, identifier, sent)
+
+    def __str__(self) -> str:
+        return ",".join((self.sender, self.identifier, str(self.sent)))
 
 
 class Category(Enum):
@@ -535,11 +551,14 @@ class Alert:
     def addresses_from_list(self, addressees: list[str]) -> None:
         self.addresses = join_and_maybe_add_quotes(addressees)
 
-    def references_to_list(self) -> list[str]:
-        return split_and_remove_quotes(self.references)
+    def references_to_list(self) -> list[Reference]:
+        return [
+            Reference.from_string(reference_str)
+            for reference_str in split_and_remove_quotes(self.references)
+        ]
 
-    def references_from_list(self, references: list[str]) -> None:
-        self.references = join_and_maybe_add_quotes(references)
+    def references_from_list(self, references: list[Reference]) -> None:
+        self.references = join_and_maybe_add_quotes(list(map(str, references)))
 
     def incidents_to_list(self) -> list[str]:
         return split_and_remove_quotes(self.incidents)
