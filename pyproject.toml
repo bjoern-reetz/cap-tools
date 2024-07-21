@@ -85,6 +85,7 @@ select = ["ALL"]
 ignore = [
     "D1",  # missing docstrings
     "FIX",  # flake8-fixme
+    "PLC0414",  # useless-import-alias
     # taken from https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
     "W191",  # tab-indentation
     "E111",  # indentation-with-invalid-multiple
