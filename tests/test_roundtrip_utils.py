@@ -6,7 +6,7 @@ import cap_tools.utils
 from . import strategies as custom_st
 
 
-@given(items=st.lists(custom_st.group_listing_item))
+@given(items=st.lists(custom_st.group_listing_items()))
 def test_roundtrip_join_and_maybe_add_quotes_split_and_remove_quotes(
     items: list[str],
 ) -> None:
