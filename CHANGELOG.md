@@ -1,3 +1,14 @@
+## v3.1.0 (2024-07-21)
+
+### Feat
+
+- **cap_tools.AlertState**: add new class AlertState
+- **cap_tools.Reference**: add from_alert static method
+
+### Refactor
+
+- **tests**: refactor Hypothesis strategies, introducing strategies for Alert and Info
+
 ## v3.0.0 (2024-07-20)
 
 ### BREAKING CHANGE
