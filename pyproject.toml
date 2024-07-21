@@ -83,6 +83,7 @@ skip-magic-trailing-comma = true
 select = ["ALL"]
 ignore = [
     "D1",  # missing docstrings
+    "FIX",  # flake8-fixme
     # taken from https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
     "W191",  # tab-indentation
     "E111",  # indentation-with-invalid-multiple
@@ -105,6 +106,7 @@ split-on-trailing-comma = false
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/test_*.py" = ["S101"]
+"tests/strategies.py" = ["B008", "PLR0913"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
