@@ -14,7 +14,7 @@ version_scheme = "pep440"
 version_provider = "poetry"
 version_files = ["pyproject.toml:version"]
 update_changelog_on_bump = true
-pre_bump_hooks = ["poetry run pytest", "scripts/regenerate-badges.sh"]
+pre_bump_hooks = ["poetry run pytest --hypothesis-profile pre-bump", "scripts/regenerate-badges.sh"]
 
 [tool.coverage.run]
 source = ["src", "tests"]
@@ -65,6 +65,7 @@ reportUnusedCallResult = "warning"
 addopts = [
     "--cov",
     "--cov-report=term:skip-covered",
+    "--hypothesis-profile=fast",
     "--import-mode=importlib",
     "--strict-config",
     "--strict-markers",

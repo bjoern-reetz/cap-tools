@@ -31,7 +31,7 @@ repos:
       - id: pytest
         name: pytest
         language: system
-        entry: poetry run pytest tests/quick/
+        entry: poetry run pytest
         types: [python]
         pass_filenames: false
         stages: [pre-commit, pre-merge-commit, pre-push, manual]
