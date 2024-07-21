@@ -24,6 +24,10 @@ class Reference(NamedTuple):
         sent = XmlDateTime.from_string(sent_str)
         return Reference(sender, identifier, sent)
 
+    @staticmethod
+    def from_alert(alert: "Alert", /) -> "Reference":
+        return Reference(alert.sender, alert.identifier, alert.sent)
+
     def __str__(self) -> str:
         return ",".join((self.sender, self.identifier, str(self.sent)))
 
