@@ -1,3 +1,9 @@
+## v3.1.1 (2024-08-04)
+
+### Fix
+
+- **pyproject.toml**: improve project metadata
+
 ## v3.1.0 (2024-07-21)
 
 ### Feat

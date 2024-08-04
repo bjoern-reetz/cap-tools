@@ -1,7 +1,7 @@
 [project]
 name = "cap-tools"
 requires-python = ">=3.10"
-version = "3.1.0"
+version = "3.1.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -21,7 +21,7 @@ source = ["src", "tests"]
 
 [tool.poetry]
 name = "cap-tools"
-version = "3.1.0"
+version = "3.1.1"
 description = "Python data bindings for the Common Alerting Protocol Version."
 license = "MIT"
 authors = ["Björn Reetz <git@bjoern-reetz.de>"]
