@@ -23,8 +23,21 @@ source = ["src", "tests"]
 name = "cap-tools"
 version = "3.1.0"
 description = "Python data bindings for the Common Alerting Protocol Version."
+license = "MIT"
 authors = ["Björn Reetz <git@bjoern-reetz.de>"]
 readme = "README.md"
+homepage = "https://github.com/bjoern-reetz/cap-tools"
+repository = "https://github.com/bjoern-reetz/cap-tools"
+documentation = "https://github.com/bjoern-reetz/cap-tools"
+keywords = ["cap", "common alerting protocol", "read", "write", "tool", "util"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+    "Topic :: Utilities",
+]
 packages = [{include = "cap_tools", from = "src"}]
 
 [tool.poetry.dependencies]
